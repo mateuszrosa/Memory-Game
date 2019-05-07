@@ -5,25 +5,34 @@
     font-family: sans-serif;
 }
 
-h1 {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 40px;
+body {
+    height: 100vh;
+    display: flex;
+    background: #4092c8;
 }
 
-.board {
-    width: 60%;
-    height: 70vh;
-    margin: 50px auto;
-    border: 3px solid black;
+.memory-game {
+    width: 640px;
+    height: 640px;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: space-between;
 }
 
-.board div {
-    flex-basis: 23%;
-    height: 19%;
-    background-color: #ddd;
+.memory-card {
+    width: calc(25% - 10px);
+    height: calc(33.333% - 10px);
+    margin: 5px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+
+.front-face,
+.back-face {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: absolute;
+    border-radius: 5px;
+    background: #1C7CCC;
 }
