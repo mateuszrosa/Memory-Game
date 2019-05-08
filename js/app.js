@@ -12,15 +12,15 @@ const flipCard = function() {
     secondCard = this;
     hasFlippedCard = false;
 
-    checkForMatch();
+    checkForPair();
 };
 
-const checkForMatch = () => {
+const checkForPair = () => {
     let isMatch = firstCard.dataset.name === secondCard.dataset.name;
-    isMatch ? disableCards() : unFlipCards();
+    isMatch ? excludeCards() : unFlipCards();
 };
 
-const disableCards = () => {
+const excludeCards = () => {
     console.log('disable');
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
