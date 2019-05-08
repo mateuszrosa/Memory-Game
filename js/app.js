@@ -1,5 +1,5 @@
-const cards = document.querySelectorAll('.memory-card');
-
+const cards = document.querySelectorAll('.game-card');
+console.log(cards);
 const flipCard = function() {
     this.classList.toggle('flip');
 };
