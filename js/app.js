@@ -11,12 +11,14 @@ const flipCard = function() {
     };
     secondCard = this;
     hasFlippedCard = false;
-
     checkForPair();
 };
 
-const checkForPair = () => {
-    let isMatch = firstCard.dataset.name === secondCard.dataset.name;
+const checkForPair = function() {
+    console.log(firstCard, secondCard);
+    let isMatch = firstCard.dataset.type === secondCard.dataset.type;
+    console.log(firstCard.dataset.type);
+    console.log(secondCard.dataset.type);
     isMatch ? excludeCards() : unFlipCards();
 };
 
