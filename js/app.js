@@ -1,8 +1,10 @@
 const cards = document.querySelectorAll('.game-card');
 let hasFlippedCard = false;
+let lockBoard = false;
 let firstCard, secondCard;
 
 const flipCard = function() {
+    if (lockBoard) return;
     this.classList.add('flip');
     if (!hasFlippedCard) {
         hasFlippedCard = true;
@@ -15,24 +17,21 @@ const flipCard = function() {
 };
 
 const checkForPair = function() {
-    console.log(firstCard, secondCard);
     let isMatch = firstCard.dataset.type === secondCard.dataset.type;
-    console.log(firstCard.dataset.type);
-    console.log(secondCard.dataset.type);
     isMatch ? excludeCards() : unFlipCards();
 };
 
 const excludeCards = () => {
-    console.log('disable');
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
 };
 
 const unFlipCards = () => {
+    lockBoard = true;
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
-        console.log('unflip');
+        lockBoard = false;
     }, 1500)
 };
 
