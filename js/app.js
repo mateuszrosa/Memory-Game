@@ -2,6 +2,8 @@ const cards = document.querySelectorAll('.game-card');
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
+let check = 0;
+const h1 = document.querySelector('h1');
 
 const flipCard = function() {
     if (lockBoard) return;
@@ -26,8 +28,11 @@ const checkForPair = function() {
 const excludeCards = () => {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
-
+    check++;
     resetBoard();
+    if (check === cards.length / 2) {
+        h1.textContent = "You win!";
+    }
 };
 
 const unFlipCards = () => {
@@ -50,7 +55,6 @@ const shuffleCards = () => {
         card.style.order = shuffle;
     })
 }
-
 
 shuffleCards();
 cards.forEach(card => {
