@@ -3,9 +3,15 @@ let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 let check = 0;
+let start = false;
 const h1 = document.querySelector('h1');
+let startTime = 0;
 
 const flipCard = function() {
+    start++;
+    if (start === 1) {
+        startTime = new Date();
+    };
     if (lockBoard) return;
     if (this === firstCard) return;
 
@@ -31,7 +37,10 @@ const excludeCards = () => {
     check++;
     resetBoard();
     if (check === cards.length / 2) {
-        h1.textContent = "You win!";
+        endTime = new Date();
+        let time = Math.round(endTime - startTime);
+        time /= 1000;
+        h1.textContent = `Your time: ${Math.round(time)} seconds`;
     }
 };
 
