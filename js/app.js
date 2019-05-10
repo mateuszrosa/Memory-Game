@@ -6,14 +6,15 @@ let firstCard, secondCard;
 const flipCard = function() {
     if (lockBoard) return;
     if (this === firstCard) return;
+
     this.classList.add('flip');
+
     if (!hasFlippedCard) {
         hasFlippedCard = true;
         firstCard = this;
         return;
     };
     secondCard = this;
-    hasFlippedCard = false;
     checkForPair();
 };
 
@@ -25,6 +26,8 @@ const checkForPair = function() {
 const excludeCards = () => {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
+
+    resetBoard();
 };
 
 const unFlipCards = () => {
@@ -32,9 +35,14 @@ const unFlipCards = () => {
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
-        lockBoard = false;
+        resetBoard();
     }, 1500)
 };
+
+const resetBoard = () => {
+    [hasFlippedCard, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null];
+}
 
 cards.forEach(card => {
     card.addEventListener('click', flipCard);
