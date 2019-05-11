@@ -40,7 +40,7 @@ const excludeCards = () => {
         endTime = new Date();
         let time = Math.round(endTime - startTime);
         time /= 1000;
-        h1.textContent = `Your time: ${Math.round(time)} seconds`;
+        h1.innerHTML = `Your time: <span>${Math.round(time)} seconds</span>`;
     }
 };
 

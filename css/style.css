@@ -23,6 +23,12 @@ h1 {
     width: 100%;
 }
 
+span {
+    font-weight: 400;
+    text-decoration: underline;
+    text-transform: none;
+}
+
 .board {
     width: 640px;
     height: 640px;
