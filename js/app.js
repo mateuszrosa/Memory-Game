@@ -1,10 +1,11 @@
 const cards = document.querySelectorAll('.game-card');
+const h1 = document.querySelector('h1');
+const btn = document.querySelector('button');
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 let check = 0;
 let start = false;
-const h1 = document.querySelector('h1');
 let startTime = 0;
 
 const flipCard = function() {
@@ -38,6 +39,7 @@ const excludeCards = () => {
     resetBoard();
     if (check === cards.length / 2) {
         getTime();
+        btn.style.display = "block";
     }
 };
 
