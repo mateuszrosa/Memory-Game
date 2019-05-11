@@ -37,10 +37,7 @@ const excludeCards = () => {
     check++;
     resetBoard();
     if (check === cards.length / 2) {
-        endTime = new Date();
-        let time = Math.round(endTime - startTime);
-        time /= 1000;
-        h1.innerHTML = `Your time: <span>${Math.round(time)} seconds</span>`;
+        getTime();
     }
 };
 
@@ -63,6 +60,13 @@ const shuffleCards = () => {
         let shuffle = Math.floor(Math.random() * 12);
         card.style.order = shuffle;
     })
+}
+
+const getTime = () => {
+    endTime = new Date();
+    let time = Math.round(endTime - startTime);
+    time /= 1000;
+    h1.innerHTML = `Your time: <span>${Math.round(time)} seconds</span>`;
 }
 
 shuffleCards();
