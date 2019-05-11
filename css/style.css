@@ -29,6 +29,26 @@ span {
     text-transform: none;
 }
 
+button {
+    width: 25%;
+    height: 10%;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: 800;
+    background-color: #f2d81d;
+    text-transform: uppercase;
+    transition: .25s;
+    display: none;
+}
+
+button:active {
+    transform: translateX(-50%) scale(.9)
+}
+
 .board {
     width: 640px;
     height: 640px;
