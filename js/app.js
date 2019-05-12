@@ -86,7 +86,6 @@ btn.addEventListener('click', () => {
         card.classList.remove('flip');
     });
     h1.innerHTML = "";
-    resetBoard();
     cards.forEach(card => {
         card.addEventListener('click', flipCard);
     });
