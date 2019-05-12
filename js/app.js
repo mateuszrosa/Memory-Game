@@ -75,3 +75,7 @@ shuffleCards();
 cards.forEach(card => {
     card.addEventListener('click', flipCard);
 });
+
+btn.addEventListener('click', () => {
+    shuffleCards();
+})
