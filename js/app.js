@@ -5,7 +5,7 @@ let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 let check = 0;
-let start = false;
+let start = 0;
 let startTime = 0;
 
 const flipCard = function() {
@@ -41,6 +41,7 @@ const excludeCards = () => {
         getTime();
         btn.style.display = "block";
         check = 0;
+        start = 0;
     }
 
 };
