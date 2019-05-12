@@ -40,7 +40,9 @@ const excludeCards = () => {
     if (check === cards.length / 2) {
         getTime();
         btn.style.display = "block";
+        check = 0;
     }
+
 };
 
 const unFlipCards = () => {
@@ -83,4 +85,8 @@ btn.addEventListener('click', () => {
         card.classList.remove('flip');
     });
     h1.innerHTML = "";
+    resetBoard();
+    cards.forEach(card => {
+        card.addEventListener('click', flipCard);
+    });
 })
