@@ -74,12 +74,7 @@ const getTime = () => {
     h1.innerHTML = `Your time: <span>${Math.round(time)} seconds</span>`;
 }
 
-shuffleCards();
-cards.forEach(card => {
-    card.addEventListener('click', flipCard);
-});
-
-btn.addEventListener('click', () => {
+const resetGame = () => {
     shuffleCards();
     btn.style.display = 'none';
     cards.forEach(card => {
@@ -89,4 +84,11 @@ btn.addEventListener('click', () => {
     cards.forEach(card => {
         card.addEventListener('click', flipCard);
     });
-})
+}
+
+shuffleCards();
+cards.forEach(card => {
+    card.addEventListener('click', flipCard);
+});
+
+btn.addEventListener('click', resetGame);
