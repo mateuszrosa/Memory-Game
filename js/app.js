@@ -79,4 +79,7 @@ cards.forEach(card => {
 btn.addEventListener('click', () => {
     shuffleCards();
     btn.style.display = 'none';
+    cards.forEach(card => {
+        card.classList.remove('flip');
+    });
 })
