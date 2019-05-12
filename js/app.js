@@ -82,4 +82,5 @@ btn.addEventListener('click', () => {
     cards.forEach(card => {
         card.classList.remove('flip');
     });
+    h1.innerHTML = "";
 })
