@@ -79,11 +79,9 @@ const resetGame = () => {
     btn.style.display = 'none';
     cards.forEach(card => {
         card.classList.remove('flip');
-    });
-    h1.innerHTML = "";
-    cards.forEach(card => {
         card.addEventListener('click', flipCard);
     });
+    h1.innerHTML = "";
 }
 
 shuffleCards();
