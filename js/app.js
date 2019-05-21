@@ -7,11 +7,13 @@ let firstCard, secondCard;
 let check = 0;
 let start = 0;
 let startTime = 0;
+let time = 0;
+let timing;
 
 const flipCard = function() {
     start++;
     if (start === 1) {
-        startTime = new Date();
+        timing = setInterval(timer, 1000);
     };
     if (lockBoard) return;
     if (this === firstCard) return;
@@ -38,7 +40,8 @@ const excludeCards = () => {
     check++;
     resetBoard();
     if (check === cards.length / 2) {
-        getTime();
+        clearInterval(timing);
+        h1.innerHTML = `Your time: <span>${time} seconds</span>`;
         btn.style.display = "block";
         check = 0;
         start = 0;
@@ -67,11 +70,8 @@ const shuffleCards = () => {
     })
 }
 
-const getTime = () => {
-    endTime = new Date();
-    let time = Math.round(endTime - startTime);
-    time /= 1000;
-    h1.innerHTML = `Your time: <span>${Math.round(time)} seconds</span>`;
+const timer = () => {
+    time++;
 }
 
 const resetGame = () => {
