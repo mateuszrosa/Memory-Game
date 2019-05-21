@@ -42,6 +42,7 @@ const excludeCards = () => {
     if (check === cards.length / 2) {
         clearInterval(timing);
         h1.innerHTML = `Your time: <span>${time} seconds</span>`;
+        time = 0;
         btn.style.display = "block";
         check = 0;
         start = 0;
