@@ -13,7 +13,7 @@ let timing;
 const flipCard = function() {
     start++;
     if (start === 1) {
-        timing = setInterval(timer, 1000);
+        timing = setInterval(timer, 10);
     };
     if (lockBoard) return;
     if (this === firstCard) return;
@@ -41,7 +41,7 @@ const excludeCards = () => {
     resetBoard();
     if (check === cards.length / 2) {
         clearInterval(timing);
-        h1.innerHTML = `Your time: <span>${time} seconds</span>`;
+        h1.innerHTML = `Your time: <span>${(time/100).toFixed(2)} seconds</span>`;
         time = 0;
         btn.style.display = "block";
         check = 0;
