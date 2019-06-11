@@ -24,7 +24,7 @@ class MemoryGame {
         if (this.lockBoard) return;
         if (e.target === this.firstCard) return;
 
-        e.target.classList.add('flip');
+        e.target.parentNode.classList.add('flip');
 
         if (!this.hasFlippedCard) {
             this.hasFlippedCard = true;
