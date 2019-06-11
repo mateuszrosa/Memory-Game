@@ -1,7 +1,7 @@
 class MemoryGame {
     constructor() {
         document.querySelectorAll('.game-card').forEach(card => {
-            card.addEventListener('click', this.flipCard);
+            card.addEventListener('click', this.flipCard.bind(this));
         });
         this.h1 = document.querySelector('h1');
         this.btn = document.querySelector('button');
@@ -17,22 +17,24 @@ class MemoryGame {
     }
     flipCard(e) {
         this.start++;
-        console.log(e.target)
         if (this.start === 1) {
-            this.timing = setInterval(timer, 10);
+            this.timing = setInterval(this.timer, 10);
         };
         if (this.lockBoard) return;
-        if (e.target === this.firstCard) return;
+        if (e.target.parentNode === this.firstCard) return;
 
         e.target.parentNode.classList.add('flip');
 
         if (!this.hasFlippedCard) {
             this.hasFlippedCard = true;
-            this.firstCard = e.target;
+            this.firstCard = e.target.parentNode;
             return;
         };
-        this.secondCard = e.target;
+        this.secondCard = e.target.parentNode;
         // checkForPair();
+    }
+    timer() {
+        this.time++;
     }
 }
 
