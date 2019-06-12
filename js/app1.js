@@ -11,6 +11,7 @@ class MemoryGame {
             this.secondCard
     }
     flipCard(e) {
+        if (this.lockBoard) return;
         e.target.parentNode.classList.add('flip');
 
         if (!this.hasFlippedCard) {
@@ -35,15 +36,14 @@ class MemoryGame {
         this.secondCard.removeEventListener('click', this.flipCard);
     };
     unFlipCards() {
+        this.lockBoard = true;
         setTimeout(() => {
             this.firstCard.classList.remove('flip');
             this.secondCard.classList.remove('flip');
+
+            this.lockBoard = false;
         }, 1500);
     };
-    // resetBoard() {
-    //     [this.hasFlippedCard, this.lockBoard] = [false, false];
-    //     [this.firstCard, this.secondCard] = [null, null];
-    // }
 };
 
 const memory = new MemoryGame();
