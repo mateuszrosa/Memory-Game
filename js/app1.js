@@ -8,36 +8,42 @@ class MemoryGame {
             this.hasFlippedCard = false,
             this.lockBoard = false,
             this.firstCard,
-            this.secondCard,
-            this.check = 0,
-            this.start = 0,
-            this.startTime = 0,
-            this.time = 0,
-            this.timing
+            this.secondCard
     }
     flipCard(e) {
-        this.start++;
-        if (this.start === 1) {
-            this.timing = setInterval(this.timer, 10);
-        };
-        if (this.lockBoard) return;
-        if (e.target.parentNode === this.firstCard) return;
-
         e.target.parentNode.classList.add('flip');
 
         if (!this.hasFlippedCard) {
+            // first click
             this.hasFlippedCard = true;
             this.firstCard = e.target.parentNode;
+
             return;
-        };
+        }
+        // second click
+        this.hasFlippedCard = false;
         this.secondCard = e.target.parentNode;
-        // checkForPair();
-        console.log(this.firstCard);
-        console.log(this.secondCard);
+
+        this.checkForPair();
     }
-    timer() {
-        this.time++;
+    checkForPair() {
+        let isMatch = this.firstCard.dataset.type === this.secondCard.dataset.type;
+        isMatch ? this.excludeCards() : this.unFlipCards();
     }
-}
+    excludeCards() {
+        this.firstCard.removeEventListener('click', this.flipCard);
+        this.secondCard.removeEventListener('click', this.flipCard);
+    };
+    unFlipCards() {
+        setTimeout(() => {
+            this.firstCard.classList.remove('flip');
+            this.secondCard.classList.remove('flip');
+        }, 1500);
+    };
+    // resetBoard() {
+    //     [this.hasFlippedCard, this.lockBoard] = [false, false];
+    //     [this.firstCard, this.secondCard] = [null, null];
+    // }
+};
 
 const memory = new MemoryGame();
