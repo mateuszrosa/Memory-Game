@@ -34,6 +34,7 @@ class MemoryGame {
     excludeCards() {
         this.firstCard.removeEventListener('click', this.flipCard);
         this.secondCard.removeEventListener('click', this.flipCard);
+        this.resetBoard();
     };
     unFlipCards() {
         this.lockBoard = true;
@@ -41,9 +42,13 @@ class MemoryGame {
             this.firstCard.classList.remove('flip');
             this.secondCard.classList.remove('flip');
 
-            this.lockBoard = false;
+            this.resetBoard();
         }, 1500);
     };
+    resetBoard() {
+        [this.hasFlippedCard, this.lockBoard] = [false, false];
+        [this.firstCard, this.secondCard] = [null, null];
+    }
 };
 
 const memory = new MemoryGame();
