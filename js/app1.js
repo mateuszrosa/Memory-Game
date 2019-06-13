@@ -19,7 +19,7 @@ class MemoryGame {
     flipCard(e) {
         this.start++;
         if (this.start === 1) {
-            this.timing = setInterval(this.countTime, 1000);
+            this.timing = setInterval(this.countTime, 10);
         }
         if (this.lockBoard) return;
         e.target.parentNode.classList.add('flip');
@@ -45,7 +45,12 @@ class MemoryGame {
         this.secondCard.removeEventListener('click', this.flipCard);
         this.resetBoard();
         if (this.check === this.cards.length / 2) {
-            console.log('end');
+            clearInterval(this.timing);
+            this.h1.innerHTML = `Your time: <span>${(this.time / 100).toFixed(2)} seconds</span>`;
+            this.time = 0;
+            this.btn.style.display = "block";
+            this.check = 0;
+            this.start = 0;
         }
     };
     unFlipCards() {
