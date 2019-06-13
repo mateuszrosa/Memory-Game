@@ -14,7 +14,8 @@ class MemoryGame {
             this.check = 0,
             this.start = 0,
             this.time = 0,
-            this.timing;
+            this.timing,
+            this.btn.addEventListener('click', this.resetGame.bind(this));
     }
     flipCard(e) {
         this.start++;
@@ -74,6 +75,15 @@ class MemoryGame {
     }
     countTime = () => {
         this.time++;
+    }
+    resetGame() {
+        this.shuffle();
+        this.btn.style.display = 'none';
+        this.cards.forEach(card => {
+            card.classList.remove('flip');
+            card.addEventListener('click', this.flipCard);
+        });
+        this.h1.innerHTML = "";
     }
 };
 
