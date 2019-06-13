@@ -10,11 +10,11 @@ class MemoryGame {
             this.lockBoard = false,
             this.firstCard,
             this.secondCard,
-            this.shuffle();
-        this.check = 0;
-        this.start = 0;
-        this.time = 0;
-        this.timing;
+            this.shuffle(),
+            this.check = 0,
+            this.start = 0,
+            this.time = 0,
+            this.timing;
     }
     flipCard(e) {
         this.start++;
@@ -63,6 +63,9 @@ class MemoryGame {
             let random = Math.floor(Math.random() * 12);
             card.style.order = random;
         })
+    }
+    countTime() {
+        this.time++;
     }
 };
 

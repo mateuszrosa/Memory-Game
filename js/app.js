@@ -6,7 +6,6 @@ let lockBoard = false;
 let firstCard, secondCard;
 let check = 0;
 let start = 0;
-let startTime = 0;
 let time = 0;
 let timing;
 
