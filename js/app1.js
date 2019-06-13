@@ -19,7 +19,7 @@ class MemoryGame {
     flipCard(e) {
         this.start++;
         if (this.start === 1) {
-            console.log('start');
+            this.timing = setInterval(this.countTime, 1000);
         }
         if (this.lockBoard) return;
         e.target.parentNode.classList.add('flip');
@@ -30,7 +30,6 @@ class MemoryGame {
 
             return;
         }
-        // second click
         this.hasFlippedCard = false;
         this.secondCard = e.target.parentNode;
 
@@ -64,8 +63,9 @@ class MemoryGame {
             card.style.order = random;
         })
     }
-    countTime() {
+    countTime = () => {
         this.time++;
+        console.log(this.time);
     }
 };
 
