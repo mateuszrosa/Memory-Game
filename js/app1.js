@@ -40,9 +40,13 @@ class MemoryGame {
         isMatch ? this.excludeCards() : this.unFlipCards();
     }
     excludeCards() {
+        this.check++;
         this.firstCard.removeEventListener('click', this.flipCard);
         this.secondCard.removeEventListener('click', this.flipCard);
         this.resetBoard();
+        if (this.check === this.cards.length / 2) {
+            console.log('end');
+        }
     };
     unFlipCards() {
         this.lockBoard = true;
@@ -65,7 +69,6 @@ class MemoryGame {
     }
     countTime = () => {
         this.time++;
-        console.log(this.time);
     }
 };
 
