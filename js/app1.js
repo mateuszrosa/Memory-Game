@@ -11,13 +11,20 @@ class MemoryGame {
             this.firstCard,
             this.secondCard,
             this.shuffle();
+        this.check = 0;
+        this.start = 0;
+        this.time = 0;
+        this.timing;
     }
     flipCard(e) {
+        this.start++;
+        if (this.start === 1) {
+            console.log('start');
+        }
         if (this.lockBoard) return;
         e.target.parentNode.classList.add('flip');
 
         if (!this.hasFlippedCard) {
-            // first click
             this.hasFlippedCard = true;
             this.firstCard = e.target.parentNode;
 
